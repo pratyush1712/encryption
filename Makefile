@@ -1,7 +1,7 @@
 # Makefile
 
 CC = g++
-CFLAGS = -std=c++2a -Wall -Wpedantic
+CFLAGS = -std=c++2a -pg -Wall -Wpedantic -O3 -g
 TARGET = bignum
 
 all: $(TARGET)

@@ -14,7 +14,7 @@ public:
     Bignum operator+(const Bignum &other) const;
     Bignum operator-(const Bignum &other) const;
     Bignum operator*(const Bignum &other) const;
-    Bignum operator/(const Bignum &other) const;
+    std::pair<Bignum, Bignum> operator/(const Bignum &other) const;
     Bignum operator%(const Bignum &other) const;
     Bignum operator^(std::pair<Bignum, Bignum> exp_mod) const;
 

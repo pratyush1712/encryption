@@ -7,7 +7,7 @@
 Bignum::Bignum()
 {
     value.push_back(0);
-    check();
+    // check();
 }
 
 Bignum::Bignum(const std::string &str)
@@ -21,7 +21,7 @@ Bignum::Bignum(const std::string &str)
     {
         value.push_back(0);
     }
-    check();
+    // check();
 }
 
 void Bignum::check() const
@@ -138,12 +138,12 @@ Bignum Bignum::operator*(const Bignum &other) const
     return result;
 }
 
-Bignum Bignum::operator/(const Bignum &divisor) const
+std::pair<Bignum, Bignum> Bignum::operator/(const Bignum &divisor) const
 {
     if (divisor.value.size() == 1 && divisor.value[0] == 0)
     {
         std::cout << "Error: Divide by zero." << std::endl;
-        return Bignum();
+        return std::make_pair(Bignum(), Bignum());
     }
     Bignum current;
     Bignum result;
@@ -179,7 +179,7 @@ Bignum Bignum::operator/(const Bignum &divisor) const
     {
         result.value.pop_back();
     }
-    return result;
+    return std::make_pair(result, current);
 }
 
 Bignum Bignum::operator%(const Bignum &divisor) const
@@ -190,9 +190,7 @@ Bignum Bignum::operator%(const Bignum &divisor) const
         return Bignum();
     }
 
-    Bignum quotient = (*this) / divisor;
-    Bignum remainder = (*this) - (quotient * divisor);
-    return remainder;
+    return ((*this) / divisor).second;
 }
 
 Bignum Bignum::operator^(std::pair<Bignum, Bignum> exp_mod) const
@@ -215,7 +213,7 @@ Bignum Bignum::operator^(std::pair<Bignum, Bignum> exp_mod) const
         {
             result = (result * a) % c;
         }
-        b = b / Bignum("2");
+        b = (b / Bignum("2")).first;
         a = (a * a) % c;
     }
     return result;

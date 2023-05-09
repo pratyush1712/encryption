@@ -1,0 +1,299 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+100.04      0.07     0.07  6170867     0.00     0.00  Bignum::operator*(Bignum const&) const
+  0.00      0.07     0.00  7466824     0.00     0.00  Bignum::Bignum()
+  0.00      0.07     0.00  7314792     0.00     0.00  void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  0.00      0.07     0.00  6174083     0.00     0.00  Bignum::Bignum(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.07     0.00  6170867     0.00     0.00  std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&)
+  0.00      0.07     0.00  6167737     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
+  0.00      0.07     0.00  2562426     0.00     0.00  std::vector<int, std::allocator<int> >::insert(__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int const&)
+  0.00      0.07     0.00  1281213     0.00     0.00  Bignum::operator-(Bignum const&) const
+  0.00      0.07     0.00     7368     0.00     0.01  Bignum::operator/(Bignum const&) const
+  0.00      0.07     0.00     5256     0.00     0.01  Bignum::operator%(Bignum const&) const
+  0.00      0.07     0.00     2120     0.00     0.00  Bignum::operator<=(Bignum const&) const
+  0.00      0.07     0.00       46     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long)
+  0.00      0.07     0.00       43     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long)
+  0.00      0.07     0.00        8     0.00     8.75  Bignum::operator^(std::pair<Bignum, Bignum>) const
+  0.00      0.07     0.00        8     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  0.00      0.07     0.00        4     0.00     0.00  stringToBignum(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&)
+  0.00      0.07     0.00        4     0.00     8.75  Bignum::rsaDecrypt(Bignum const&, Bignum const&) const
+  0.00      0.07     0.00        4     0.00     8.75  Bignum::rsaEncrypt(Bignum const&, Bignum const&) const
+  0.00      0.07     0.00        4     0.00     0.00  Bignum::to_string[abi:cxx11]() const
+  0.00      0.07     0.00        4     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.07     0.00        2     0.00     0.00  decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool)
+  0.00      0.07     0.00        2     0.00     0.00  padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int)
+  0.00      0.07     0.00        2     0.00     0.00  frame_dummy
+  0.00      0.07     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z9padStringRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
+  0.00      0.07     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6BignumC2Ev
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 14.28% of 0.07 seconds
+
+index % time    self  children    called     name
+                0.00    0.00    3136/6170867     Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+                0.07    0.00 6167731/6170867     Bignum::operator/(Bignum const&) const [4]
+[1]    100.0    0.07    0.00 6170867         Bignum::operator*(Bignum const&) const [1]
+                0.00    0.00 6170867/7466824     Bignum::Bignum() [15]
+                0.00    0.00 6170867/6170867     std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&) [18]
+-----------------------------------------------
+                0.00    0.04       4/8           Bignum::rsaEncrypt(Bignum const&, Bignum const&) const [7]
+                0.00    0.04       4/8           Bignum::rsaDecrypt(Bignum const&, Bignum const&) const [6]
+[2]    100.0    0.00    0.07       8         Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+                0.00    0.05    5256/5256        Bignum::operator%(Bignum const&) const [5]
+                0.00    0.02    2112/7368        Bignum::operator/(Bignum const&) const [4]
+                0.00    0.00    3136/6170867     Bignum::operator*(Bignum const&) const [1]
+                0.00    0.00    6344/6174083     Bignum::Bignum(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+                0.00    0.00    2120/2120        Bignum::operator<=(Bignum const&) const [22]
+                0.00    0.00       8/7466824     Bignum::Bignum() [15]
+                0.00    0.00       8/8           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [25]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]    100.0    0.00    0.07                 encryptDecrypt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [3]
+                0.00    0.04       4/4           Bignum::rsaEncrypt(Bignum const&, Bignum const&) const [7]
+                0.00    0.04       4/4           Bignum::rsaDecrypt(Bignum const&, Bignum const&) const [6]
+                0.00    0.00       4/4           stringToBignum(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [26]
+                0.00    0.00       2/2           padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [30]
+                0.00    0.00       2/2           decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool) [29]
+-----------------------------------------------
+                0.00    0.02    2112/7368        Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+                0.00    0.05    5256/7368        Bignum::operator%(Bignum const&) const [5]
+[4]     99.9    0.00    0.07    7368         Bignum::operator/(Bignum const&) const [4]
+                0.07    0.00 6167731/6170867     Bignum::operator*(Bignum const&) const [1]
+                0.00    0.00 6167731/6167737     void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [19]
+                0.00    0.00 6167731/6174083     Bignum::Bignum(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+                0.00    0.00 2562426/2562426     std::vector<int, std::allocator<int> >::insert(__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int const&) [20]
+                0.00    0.00 1281213/1281213     Bignum::operator-(Bignum const&) const [21]
+                0.00    0.00   14736/7466824     Bignum::Bignum() [15]
+-----------------------------------------------
+                0.00    0.05    5256/5256        Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+[5]     71.3    0.00    0.05    5256         Bignum::operator%(Bignum const&) const [5]
+                0.00    0.05    5256/7368        Bignum::operator/(Bignum const&) const [4]
+-----------------------------------------------
+                0.00    0.04       4/4           encryptDecrypt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [3]
+[6]     50.0    0.00    0.04       4         Bignum::rsaDecrypt(Bignum const&, Bignum const&) const [6]
+                0.00    0.04       4/8           Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+-----------------------------------------------
+                0.00    0.04       4/4           encryptDecrypt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [3]
+[7]     50.0    0.00    0.04       4         Bignum::rsaEncrypt(Bignum const&, Bignum const&) const [7]
+                0.00    0.04       4/8           Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+-----------------------------------------------
+                0.00    0.00       2/2           padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [30]
+[8]      0.0    0.00    0.00       2         frame_dummy [8]
+-----------------------------------------------
+                0.00    0.00       8/7466824     Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+                0.00    0.00   14736/7466824     Bignum::operator/(Bignum const&) const [4]
+                0.00    0.00 1281213/7466824     Bignum::operator-(Bignum const&) const [21]
+                0.00    0.00 6170867/7466824     Bignum::operator*(Bignum const&) const [1]
+[15]     0.0    0.00    0.00 7466824         Bignum::Bignum() [15]
+-----------------------------------------------
+                0.00    0.00  244632/7314792     std::vector<int, std::allocator<int> >::insert(__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int const&) [20]
+                0.00    0.00 7070160/7314792     Bignum::operator-(Bignum const&) const [21]
+[16]     0.0    0.00    0.00 7314792         void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [16]
+-----------------------------------------------
+                0.00    0.00       8/6174083     stringToBignum(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [26]
+                0.00    0.00    6344/6174083     Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+                0.00    0.00 6167731/6174083     Bignum::operator/(Bignum const&) const [4]
+[17]     0.0    0.00    0.00 6174083         Bignum::Bignum(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+-----------------------------------------------
+                0.00    0.00 6170867/6170867     Bignum::operator*(Bignum const&) const [1]
+[18]     0.0    0.00    0.00 6170867         std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&) [18]
+-----------------------------------------------
+                0.00    0.00       6/6167737     padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [30]
+                0.00    0.00 6167731/6167737     Bignum::operator/(Bignum const&) const [4]
+[19]     0.0    0.00    0.00 6167737         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [19]
+-----------------------------------------------
+                0.00    0.00 2562426/2562426     Bignum::operator/(Bignum const&) const [4]
+[20]     0.0    0.00    0.00 2562426         std::vector<int, std::allocator<int> >::insert(__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int const&) [20]
+                0.00    0.00  244632/7314792     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [16]
+-----------------------------------------------
+                0.00    0.00 1281213/1281213     Bignum::operator/(Bignum const&) const [4]
+[21]     0.0    0.00    0.00 1281213         Bignum::operator-(Bignum const&) const [21]
+                0.00    0.00 7070160/7314792     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [16]
+                0.00    0.00 1281213/7466824     Bignum::Bignum() [15]
+-----------------------------------------------
+                0.00    0.00    2120/2120        Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+[22]     0.0    0.00    0.00    2120         Bignum::operator<=(Bignum const&) const [22]
+-----------------------------------------------
+                0.00    0.00       2/46          padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [30]
+                0.00    0.00       4/46          decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool) [29]
+                0.00    0.00      40/46          stringToBignum(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [26]
+[23]     0.0    0.00    0.00      46         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) [23]
+                0.00    0.00      36/43          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) [24]
+-----------------------------------------------
+                0.00    0.00       2/43          decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool) [29]
+                0.00    0.00       5/43          padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [30]
+                0.00    0.00      36/43          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) [23]
+[24]     0.0    0.00    0.00      43         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) [24]
+-----------------------------------------------
+                0.00    0.00       8/8           Bignum::operator^(std::pair<Bignum, Bignum>) const [2]
+[25]     0.0    0.00    0.00       8         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [25]
+-----------------------------------------------
+                0.00    0.00       4/4           encryptDecrypt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [3]
+[26]     0.0    0.00    0.00       4         stringToBignum(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [26]
+                0.00    0.00      40/46          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) [23]
+                0.00    0.00       8/6174083     Bignum::Bignum(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+-----------------------------------------------
+                0.00    0.00       4/4           decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool) [29]
+[27]     0.0    0.00    0.00       4         Bignum::to_string[abi:cxx11]() const [27]
+-----------------------------------------------
+                0.00    0.00       4/4           decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool) [29]
+[28]     0.0    0.00    0.00       4         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+-----------------------------------------------
+                0.00    0.00       2/2           encryptDecrypt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [3]
+[29]     0.0    0.00    0.00       2         decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool) [29]
+                0.00    0.00       4/4           Bignum::to_string[abi:cxx11]() const [27]
+                0.00    0.00       4/46          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) [23]
+                0.00    0.00       4/4           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+                0.00    0.00       2/43          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) [24]
+-----------------------------------------------
+                0.00    0.00       2/2           encryptDecrypt(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [3]
+[30]     0.0    0.00    0.00       2         padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [30]
+                0.00    0.00       6/6167737     void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [19]
+                0.00    0.00       5/43          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) [24]
+                0.00    0.00       2/2           frame_dummy [8]
+                0.00    0.00       2/46          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [52]
+[31]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z9padStringRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi [31]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [52]
+[32]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6BignumC2Ev [32]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [31] _GLOBAL__sub_I__Z9padStringRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi (main.cpp) [27] Bignum::to_string[abi:cxx11]() const [20] std::vector<int, std::allocator<int> >::insert(__gnu_cxx::__normal_iterator<int const*, std::vector<int, std::allocator<int> > >, int const&)
+  [32] _GLOBAL__sub_I__ZN6BignumC2Ev (bignum.cpp) [4] Bignum::operator/(Bignum const&) const [23] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long)
+  [26] stringToBignum(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [2] Bignum::operator^(std::pair<Bignum, Bignum>) const [25] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  [29] decryptAndMergeStrings[abi:cxx11](Bignum const&, Bignum const&, bool, bool) [22] Bignum::operator<=(Bignum const&) const [19] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
+  [30] padString(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int) [21] Bignum::operator-(Bignum const&) const [24] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long)
+  [17] Bignum::Bignum(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [1] Bignum::operator*(Bignum const&) const [28] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [15] Bignum::Bignum()        [5] Bignum::operator%(Bignum const&) const [8] frame_dummy
+   [6] Bignum::rsaDecrypt(Bignum const&, Bignum const&) const [18] std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&)
+   [7] Bignum::rsaEncrypt(Bignum const&, Bignum const&) const [16] void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)

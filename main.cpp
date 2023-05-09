@@ -136,6 +136,7 @@ int main(int argc, char *argv[])
 
     std::string input(argv[1]);
     encryptDecrypt(input, 2); // we use 1 as line number for simplicity
+    encryptDecrypt("The cake is a lie!", 2);
 
     return 0;
 }
