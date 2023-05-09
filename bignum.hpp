@@ -18,6 +18,9 @@ public:
     Bignum operator%(const Bignum &other) const;
     Bignum operator^(std::pair<Bignum, Bignum> exp_mod) const;
 
+    Bignum rsaEncrypt(const Bignum &public_exponent, const Bignum &modulus) const;
+    Bignum rsaDecrypt(const Bignum &private_exponent, const Bignum &modulus) const;
+
     bool operator==(const Bignum &other) const;
     bool operator<(const Bignum &other) const;
     bool operator>(const Bignum &other) const;

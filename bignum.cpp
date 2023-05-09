@@ -221,6 +221,16 @@ Bignum Bignum::operator^(std::pair<Bignum, Bignum> exp_mod) const
     return result;
 }
 
+Bignum Bignum::rsaEncrypt(const Bignum &public_exponent, const Bignum &modulus) const
+{
+    return (*this) ^ std::pair<Bignum, Bignum>(public_exponent, modulus);
+}
+
+Bignum Bignum::rsaDecrypt(const Bignum &private_exponent, const Bignum &modulus) const
+{
+    return (*this) ^ std::pair<Bignum, Bignum>(private_exponent, modulus);
+}
+
 bool Bignum::operator<(const Bignum &other) const
 {
     if (value.size() != other.value.size())
