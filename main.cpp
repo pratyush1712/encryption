@@ -1,7 +1,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <sstream>
-#include <iomanip> // Add this include
+#include <iomanip>
+#include <thread>
+#include <vector>
+#include <mutex>
 #include "bignum.hpp"
 
 const Bignum rsa_n = Bignum("9616540267013058477253762977293425063379243458473593816900454019721117570003248808113992652836857529658675570356835067184715201230519907361653795328462699");
@@ -49,15 +52,19 @@ std::pair<Bignum, Bignum> stringToBignum(const std::pair<std::string, std::strin
     return std::make_pair(Bignum(firstAscii.str()), Bignum(secondAscii.str()));
 }
 
-std::string decryptAndMergeStrings(const Bignum &first_bignum, const Bignum &second_bignum, bool prepend_zero_first = 1, bool prepend_zero_second = 1)
+std::string decryptAndMergeStrings(const Bignum &first_bignum, const Bignum &second_bignum)
 {
     std::string first_num_str = first_bignum.to_string();
     std::string second_num_str = second_bignum.to_string();
 
-    if (prepend_zero_first == 0)
+    if (first_num_str.length() % 3 != 0)
+    {
         first_num_str = "0" + first_num_str;
-    if (prepend_zero_second == 0)
+    }
+    if (second_num_str.length() % 3 != 0)
+    {
         second_num_str = "0" + second_num_str;
+    }
 
     std::ostringstream first_ss, second_ss;
 
@@ -82,11 +89,6 @@ std::string decryptAndMergeStrings(const Bignum &first_bignum, const Bignum &sec
     return output;
 }
 
-std::pair<std::string, std::string> splitString(const std::string &input)
-{
-    return {input.substr(0, 51), input.substr(51, 51)};
-}
-
 bool isUnsignedInt(const std::string &str)
 {
     for (char c : str)
@@ -100,15 +102,9 @@ bool isUnsignedInt(const std::string &str)
 }
 
 // function to encrypt and decrypt a message (with the line number given)
-void encryptDecrypt(const std::string &input, int lineNumber)
+std::pair<std::string, std::string> e(const std::string &input, int lineNumber)
 {
-    bool prepend_zero_first = false;
-    bool prepend_zero_second = false;
     std::pair<std::string, std::string> padded = padString(input, lineNumber);
-    if (padded.first[0] == '0')
-        prepend_zero_first = true;
-    if (padded.second[0] == '0')
-        prepend_zero_second = true;
     Bignum first_half = stringToBignum(padded).first;
     Bignum second_half = stringToBignum(padded).second;
 
@@ -116,31 +112,91 @@ void encryptDecrypt(const std::string &input, int lineNumber)
     Bignum encrypted_first_half = first_half.rsaEncrypt(rsa_e, rsa_n);
     Bignum encrypted_second_half = second_half.rsaEncrypt(rsa_e, rsa_n);
 
+    return std::make_pair(encrypted_first_half.to_string(), encrypted_second_half.to_string());
+}
+
+std::string d(const Bignum &encrypted_first_half, const Bignum &encrypted_second_half)
+{
     // decrypt
     Bignum decrypted_first_half = encrypted_first_half.rsaDecrypt(rsa_d, rsa_n);
     Bignum decrypted_second_half = encrypted_second_half.rsaDecrypt(rsa_d, rsa_n);
 
     // convert to string
-    std::string decrypted = decryptAndMergeStrings(decrypted_first_half, decrypted_second_half, prepend_zero_first, prepend_zero_second);
+    std::string decrypted = decryptAndMergeStrings(decrypted_first_half, decrypted_second_half);
 
-    std::cout << "Decrypted: " << decrypted << std::endl;
+    return decrypted;
 }
 
 int main(int argc, char *argv[])
 {
+    // Bignum first("1106075512756897693845541115782443403978043085451052642767226006958164432759348134413074997249085621409356986688646602003242847768263275335375958215687029");
+    // Bignum second("6041941234439008986868866446092700359584184322890943920375576204389615565795614725594091512619740474084925538905434207584348157820684201345032821842865449");
+    // std::string decrypted = d(first, second);
+    // std::cout << decrypted << std::endl;
     if (argc < 2)
     {
-        std::cerr << "Usage: " << argv[0] << " <sentence to encrypt/decrypt>" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <process>" << std::endl;
         return 1;
     }
 
-    std::string input(argv[1]);
-    encryptDecrypt(input, 2); // we use 1 as line number for simplicity
-    encryptDecrypt("The cake is a lie!", 2);
+    std::string process = argv[1];
+    std::vector<std::thread> threads;
+
+    if (process == "e")
+    {
+        std::vector<std::pair<std::string, std::string>> results;
+        std::string input;
+        int lineNumber = 0;
+        while (std::getline(std::cin, input))
+        {
+            lineNumber++;
+            results.resize(lineNumber);
+            threads.push_back(std::thread([&, lineNumber]()
+                                          {
+                auto result = e(input, lineNumber);
+                results[lineNumber - 1] = result; }));
+        }
+        for (auto &t : threads)
+            t.join();
+        for (auto &res : results)
+        {
+            std::cout << res.first << std::endl
+                      << res.second << std::endl;
+        }
+    }
+    else if (process == "d")
+    {
+        std::vector<std::string> results;
+        std::string input1, input2;
+        int linePairNumber = 0;
+        while (std::getline(std::cin, input1))
+        {
+            if (!std::getline(std::cin, input2))
+            {
+                std::cerr << "Error: Expected an even number of lines." << std::endl;
+                return 1;
+            }
+            linePairNumber++;
+            results.resize(linePairNumber);
+            if (!isUnsignedInt(input1) || !isUnsignedInt(input2))
+            {
+                std::cerr << "Error: Invalid input" << std::endl;
+                return 1;
+            }
+            Bignum first_bignum(input1);
+            Bignum second_bignum(input2);
+            threads.push_back(std::thread([&, linePairNumber]()
+                                          {
+                    auto result = d(first_bignum, second_bignum);
+                    results[linePairNumber - 1] = result; }));
+        }
+        for (auto &t : threads)
+            t.join();
+        for (auto &res : results)
+        {
+            std::cout << res << std::endl;
+        }
+    }
 
     return 0;
 }
-
-// decryption works fine. problem is with bignum to string.
-// remember, we removed the starting zeroes. so we need to
-// add them back so we can convert to ascii properly.

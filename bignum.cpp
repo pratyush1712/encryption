@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
+#include <map>
 
 Bignum::Bignum()
 {
@@ -62,6 +63,10 @@ Bignum Bignum::operator+(const Bignum &other) const
         result.value.push_back(digit % 10);
         carried = digit / 10;
     }
+    if (carried > 0)
+    {
+        result.value.push_back(carried);
+    }
     return result;
 }
 
@@ -111,6 +116,74 @@ Bignum Bignum::operator-(const Bignum &other) const
     }
     return result;
 }
+
+// Bignum Bignum::multi_helper(int digit) const
+// {
+//     Bignum result;
+//     result.value.resize(value.size(), 0);
+//     int carry = 0;
+//     for (unsigned i = 0; i < value.size(); i++)
+//     {
+//         int sum = value[i] * digit + carry;
+//         result.value[i] = sum % 10;
+//         carry = sum / 10;
+//     }
+//     if (carry > 0)
+//     {
+//         result.value.push_back(carry);
+//     }
+//     // remove leading 0s
+//     while (result.value.size() > 1 && result.value.back() == 0)
+//     {
+//         result.value.pop_back();
+//     }
+//     return result;
+// }
+
+// Bignum Bignum::operator*(const Bignum &other) const
+// {
+//     // first check if either operand is 0
+//     if ((value.size() == 1 && value[0] == 0) || (other.value.size() == 1 && other.value[0] == 0))
+//     {
+//         return Bignum();
+//     }
+//     const Bignum *larger = std::max(this, &other);
+//     const Bignum &smaller = larger == this ? other : *this;
+//     // calculate and store all multiples of smaller from 1 to 9 in a map
+//     std::map<int, Bignum> multiples;
+//     for (int i = 0; i <= 9; i++)
+//     {
+//         multiples[i] = smaller.multi_helper(i);
+//     }
+//     // now multiply larger by each digit in smaller
+//     Bignum result;
+//     Bignum carry("");
+//     for (unsigned i = 0; i < larger->value.size(); i++)
+//     {
+//         int digit = larger->value[i];
+//         Bignum temp = multiples[digit] + carry;
+//         // temp's first digit is the result digit, the rest are carry
+//         result.value.push_back(temp.value[0]);
+//         carry.value = std::vector<int>(temp.value.begin() + 1, temp.value.end());
+//     }
+//     // add the last carry
+//     while (carry.value.size() > 0)
+//     {
+//         result.value.push_back(carry.value[0]);
+//         carry.value.erase(carry.value.begin());
+//     }
+//     // remove leading 0s
+//     while (result.value.size() > 1 && result.value.back() == 0)
+//     {
+//         result.value.pop_back();
+//     }
+//     // remove one zero from the front
+//     if (result.value.size() > 1 && result.value[0] == 0)
+//     {
+//         result.value.erase(result.value.begin());
+//     }
+//     return result;
+// }
 
 Bignum Bignum::operator*(const Bignum &other) const
 {
@@ -209,7 +282,7 @@ Bignum Bignum::operator^(std::pair<Bignum, Bignum> exp_mod) const
     a = a % c;
     while (b > zero)
     {
-        if ((b % Bignum("2")) == Bignum("1"))
+        if ((b.value[0] % 2) == 1)
         {
             result = (result * a) % c;
         }

@@ -13,6 +13,7 @@ public:
 
     Bignum operator+(const Bignum &other) const;
     Bignum operator-(const Bignum &other) const;
+    // Bignum multi_helper(int digit) const;
     Bignum operator*(const Bignum &other) const;
     std::pair<Bignum, Bignum> operator/(const Bignum &other) const;
     Bignum operator%(const Bignum &other) const;
